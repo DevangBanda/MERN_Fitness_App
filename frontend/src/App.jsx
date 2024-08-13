@@ -6,6 +6,7 @@ import { lightTheme } from "./utils/Themes";
 import {BrowserRouter} from 'react-router-dom';
 import Authentication from "./pages/Authentication";
 import React,{useState} from "react";
+import Navbar from "./components/Navbar";
 
 const Container = styled.div`
 height: 100vh; 
@@ -20,7 +21,7 @@ transition: all 0.2s ease`;
 
 function App() {
 
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(true);
 
     return (
       <ThemeProvider theme={lightTheme}>

@@ -1,8 +1,16 @@
 import React from 'react'
+import styled from 'styled-components';
+
+const Nav = styled.div``;
+const NavContainer = styled.div``;
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <Nav>
+    <NavContainer>
+    Bird is good
+    </NavContainer>
+    </Nav>
   )
 }
 
