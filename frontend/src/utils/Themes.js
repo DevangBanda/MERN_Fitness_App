@@ -1,8 +1,10 @@
 export const lightTheme = {
-  bg: "#FFFFFF",
-  bgLight: "#FFFFFF",
+  bg: "#202020",
+  bgLight: "#101010",
   primary: "#007AFF",
   secondary: "#5B86E5",
+
+  mainPrimary: "#DDDDDD",
 
   disabled: "#b1b2b3",
   menubar: "#191c29",

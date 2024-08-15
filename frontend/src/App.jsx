@@ -18,7 +18,7 @@ height: 100vh;
 width: 100%; 
 display:flex;
 flex-direction: column; 
-backgroumd:${({theme}) => theme.bg}; 
+background:${({theme}) => theme.bg}; 
 color: ${({theme}) => theme.text_primary};
 overflow-x: hidden;
 overflow-y: hidden; 

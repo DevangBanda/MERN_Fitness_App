@@ -6,7 +6,7 @@ import { MenuRounded } from '@mui/icons-material';
 import { Avatar } from '@mui/material';
 
 const Nav = styled.div`
-background: ${({theme}) => theme.black};
+background: ${({theme}) => theme.bgLight};
 height: 100px;
 display: flex; 
 align-items: center; 
@@ -15,7 +15,8 @@ position: sticky;
 top: 0;
 z-index:10;
 color:white;
-border-bottom: 1px solid ${({theme}) => theme.primary};
+border-bottom: 1px solid black;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
 `;
 const NavContainer = styled.div`
 width: 100%; 
@@ -101,16 +102,17 @@ gap: 16px;
 list-style:none;
 width: 90%;
 padding: 12px 40px 24px 40px;
-background: ${({theme}) => "black"};
+background: ${({theme}) => theme.bgLight};
 position: absolute;
 top: 80px; 
 right: 0px;
 transition: all 0.5s ease-in-out;
-transform: ${({isOpen}) => isOpen ? "translateY(0)" : "translateY(-100%)"};
+transform: ${props => (props.$isOpen ? "translateY(0)" : "translateY(-100%)")};
 border-radius: 0 0 20px 20px;
-opacity: ${({isOpen}) => (isOpen ? "100%" : "1%")};
-z-index: ${({isOpen}) => (isOpen ? "10000" : "-100")};
+opacity: ${props => (props.$isOpen ?"100%" : "1%")};
+z-index: ${props => (props.$isOpen ? "10000" : "-100")};
 `;
+
 
 const Navbar = () => {
 
@@ -127,7 +129,7 @@ const Navbar = () => {
             Bird Fitness
         </NavLogo>
 
-        <MobileMenu isOpen = {isOpen}>
+        <MobileMenu $isOpen = {isOpen}>
           <Navlink to = "/">Home</Navlink>
           <Navlink to = "/">Workouts</Navlink>
           <Navlink to = "/">Tutorials</Navlink>

@@ -4,12 +4,14 @@ import {
   TimelineRounded,
 } from "@mui/icons-material";
 
+
+
 export const counts = [
   {
     name: "Calories Burned",
-    icon: (
-      <LocalFireDepartmentRounded sx={{ color: "inherit", fontSize: "26px" }} />
-    ),
+    icon: 
+      (LocalFireDepartmentRounded)
+    ,
     desc: "Total calories burned today",
     key: "totalCaloriesBurnt",
     unit: "kcal",
@@ -18,7 +20,7 @@ export const counts = [
   },
   {
     name: "Workouts",
-    icon: <FitnessCenterRounded sx={{ color: "inherit", fontSize: "26px" }} />,
+    // icon: <FitnessCenterRounded sx={{ color: "inherit", fontSize: "26px" }} />,
     desc: "Total no of workouts for today",
     key: "totalWorkouts",
     unit: "",
@@ -27,7 +29,7 @@ export const counts = [
   },
   {
     name: "Average  Calories Burned",
-    icon: <TimelineRounded sx={{ color: "inherit", fontSize: "26px" }} />,
+  //  icon: <TimelineRounded sx={{ color: "inherit", fontSize: "26px" }} />,
     desc: "Average Calories Burned on each workout",
     key: "avgCaloriesBurntPerWorkout",
     unit: "kcal",
