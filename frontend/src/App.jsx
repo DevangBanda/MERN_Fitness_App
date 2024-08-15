@@ -7,6 +7,11 @@ import {BrowserRouter} from 'react-router-dom';
 import Authentication from "./pages/Authentication";
 import React,{useState} from "react";
 import Navbar from "./components/Navbar";
+import {Routes, Route} from 'react-router-dom'
+import Dashboard from "./pages/Dashboard";
+import Workout from "./pages/Workout";
+import Tutorials from "./pages/Tutorials";
+import Blog from './pages/Blog'
 
 const Container = styled.div`
 height: 100vh; 
@@ -29,6 +34,12 @@ function App() {
           {user ? 
           <Container>
             <Navbar/>
+            <Routes>
+              <Route path = "/" element = {<Dashboard/>}/>
+              <Route path = "/workout" element = {<Workout/>}/>
+              <Route path = "/tutorials" element = {<Tutorials/>}/>
+              <Route path = "/blog" element = {<Blog/>}/>
+            </Routes>
           </Container>  :
           
           <Container> 

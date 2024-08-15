@@ -114,8 +114,8 @@ z-index: ${({isOpen}) => (isOpen ? "10000" : "-100")};
 
 const Navbar = () => {
 
-  const [isOpen, setisOpen] = useState(false);
 
+  const [isOpen, setisOpen] = useState(false);
   return (
     <Nav>
       <NavContainer>
