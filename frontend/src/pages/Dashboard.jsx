@@ -31,7 +31,11 @@ gap: 30px;
 
 const FlexWrap = styled.div`
 display: flex;
-justify-content: space-evenly;`
+flex-wrap: wrap;
+justify-content: space-evenly;
+gap: 30px;
+padding: 0 20px;
+@media(max-width: 786px){gap:10px;}`
 ;
 
 const Dashboard = () => {
@@ -41,7 +45,8 @@ const Dashboard = () => {
         <Title>Dashboard</Title>
           <FlexWrap>
               {counts.map((item)=>{
-                  <Tile>Item={item}</Tile>
+                  {console.log(item)}
+                  return <Tile key={item} item={item}/>
               })}
          </FlexWrap>
       </Wrapper>
