@@ -2,6 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import {counts} from '../utils/data';
 import Tile from '../components/Cards/Tile';
+import GraphicTile from '../components/Cards/GraphicTile';
 
 const Container = styled.div`
 display: flex; 
@@ -39,15 +40,50 @@ padding: 0 20px;
 ;
 
 const Dashboard = () => {
+
+  const data = {
+    totalCaloriesBurnt: 1350, 
+    totalWorkouts: 6, 
+    avgCaloriesBurntPerWorkout: 225, 
+    weekCalories:{
+      weeks:["17th", "18th","19th","20th","21st","22nd"],
+      caloriesBurnt:[10500, 0,0,0,0,0]
+    }, 
+    pieChartData: [
+      {
+        id: 0, 
+        value: 2500, 
+        label: "arms"
+      },
+      {
+        id: 1, 
+        value: 1500, 
+        label: "chest"
+      },
+      {
+        id: 2, 
+        value: 3750, 
+        label: "back"
+      }, 
+      {
+        id: 3, 
+        value: 5000, 
+        label: "legs"
+      },
+    ],
+  };
   return (
     <Container>
       <Wrapper>
         <Title>Dashboard</Title>
           <FlexWrap>
               {counts.map((item)=>{
-                  {console.log(item)}
-                  return <Tile key={item} item={item}/>
+                  return <Tile key={item.key} item={item} data={data}/>
               })}
+         </FlexWrap>
+
+         <FlexWrap>
+          <GraphicTile data = {data}></GraphicTile>
          </FlexWrap>
       </Wrapper>
     </Container>

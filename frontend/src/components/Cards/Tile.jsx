@@ -22,13 +22,6 @@ width: 100%;
 flex-direction: column;
 `;
 
-const Icon = styled.div`
-display: flex; 
-height: fit-content;
-padding: 20px;
-display: flex; 
-justify-content: center; `;
-
 const LeftContainer = styled.div``;
 
 const Title = styled.div`
@@ -55,30 +48,37 @@ font-weight: 400;
 const Change = styled.div`
 font-size: 20px;
 font-weight: 500;
-${({positive, theme})=> positive? 
+${({$positive, theme})=> $positive? 
 `color: green`:`color: red`};
 @media(max-width: 600px){font-size: 16px;}`;
 
 const Desc = styled.div`
+flex:1;
 font-size: 16px;
-@media(max-width: 600px){font-size: 12px;}`;
+@media(max-width: 600px){display: none;}`;
 
+const Icon = styled.div`
+display: flex; 
+height: fit-content;
+padding: 20px;
+display: flex; 
+justify-content: center;
+`;
 
-
-const Tile = ({item}) => {
+const Tile = ({item, data}) => {
   return (
     <Container>
         <Left>
           <LeftContainer>
             <Title>{item.name}</Title>
-            <Value>Value
+            <Value>{data && data[item.key].toFixed(2)}
               <Units>{item.unit}</Units>
-              <Change positive>(10%)</Change>
+              <Change $positive>(10%)</Change>
             </Value>
             <Desc>{item.desc}</Desc>
           </LeftContainer>
         </Left>
-        <Icon>
+        <Icon color={"red"}>
           {item.icon}
         </Icon>
     </Container>
