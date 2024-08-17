@@ -3,6 +3,8 @@ import styled from "styled-components";
 import {counts} from '../utils/data';
 import Tile from '../components/Cards/Tile';
 import GraphicTile from '../components/Cards/GraphicTile';
+import StatsChart from '../components/Cards/StatsChart';
+import WorkoutCard from '../components/Cards/WorkoutCard';
 
 const Container = styled.div`
 display: flex; 
@@ -39,6 +41,22 @@ padding: 0 20px;
 @media(max-width: 786px){gap:10px;}`
 ;
 
+const Section = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin-bottom: 50px;
+padding: 0 20px;
+@media(max-width: 786px){gap:10px;}`;
+
+const CardWrapper = styled.div`
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+gap: 30px;
+padding: 0 20px;
+@media(max-width: 786px){gap:10px;}`;
+
 const Dashboard = () => {
 
   const data = {
@@ -47,7 +65,7 @@ const Dashboard = () => {
     avgCaloriesBurntPerWorkout: 225, 
     weekCalories:{
       weeks:["17th", "18th","19th","20th","21st","22nd"],
-      caloriesBurnt:[10500, 0,0,0,0,0]
+      caloriesBurnt:[10500, 10500,10500,10500,10500,0]
     }, 
     pieChartData: [
       {
@@ -72,6 +90,8 @@ const Dashboard = () => {
       },
     ],
   };
+
+
   return (
     <Container>
       <Wrapper>
@@ -80,11 +100,21 @@ const Dashboard = () => {
               {counts.map((item)=>{
                   return <Tile key={item.key} item={item} data={data}/>
               })}
-         </FlexWrap>
+          </FlexWrap>
 
          <FlexWrap>
           <GraphicTile data = {data}></GraphicTile>
+          <StatsChart data = {data}></StatsChart>
          </FlexWrap>
+
+         <Section>
+          <Title>Today's Workouts</Title>
+          <CardWrapper>
+            <WorkoutCard></WorkoutCard>
+            <WorkoutCard></WorkoutCard>
+            <WorkoutCard></WorkoutCard>
+          </CardWrapper>
+         </Section>
       </Wrapper>
     </Container>
   )

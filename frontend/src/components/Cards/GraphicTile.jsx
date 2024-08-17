@@ -1,9 +1,9 @@
 import { LineAxisOutlined } from '@mui/icons-material';
-import { BarChart } from '@mui/x-charts';
+import { axisClasses, BarChart, barElementClasses, BarLabel, legendClasses} from '@mui/x-charts';
 import React from 'react'
 import styled from "styled-components"; 
 import {Bar} from "react-chartjs-2";
-import {Chart as ChartJs} from 'chart.js';
+
 
 const Card = styled.div`
 flex: 1; 
@@ -31,18 +31,35 @@ const GraphicTile = ({data}) => {
     {console.log("GraphicTile")}
         <Title>Weekly Calories burnt</Title>
         {data?.weekCalories &&
-        // (<BarChart
-        //     xAxis={[{scaleType: "band", data: data?.weekCalories?.weeks,},
-        //         {colorMap:{colors: ["White", "Red", "Pink"], type:'ordinal'}}
-        //      ]}
-        //     series={[{scaleType:"band", data: data?.weekCalories?.caloriesBurnt},]}
-        //     height={300}
-        // />
-        // )}
-        (
-          <Bar>
-
-          </Bar>
+        (<BarChart
+            xAxis={[{scaleType: "band", data: data?.weekCalories?.weeks, stroke:"#FF0000",
+              colorMap: {
+                type: 'ordinal',
+                colors: ['#ccebc5', '#a8ddb5', '#7bccc4', '#4eb3d3', '#2b8cbe', '#08589e']
+              }, label:"Day of month", 
+              tickLabelStyle: {stroke: "#FFFFFF", 
+                fontSize: 15,}, 
+              
+            }]}
+            series={[{scaleType:"band", data: data?.weekCalories?.caloriesBurnt, label:"Calories Burnt Per Day",
+              highlightScope: { faded: 'global', highlighted: 'item' },
+              faded: {height: 30,color: 'black', opacity: 0.3 },
+              highlighted: {
+                color: 'red', // Color for highlighted items
+                height: 350 // Optional: adjust height for highlighted items if needed
+              }
+            }]}
+            height={300}
+            borderRadius={10}
+            slotProps={{legend: {labelStyle: {fill:'white'}}}}
+            
+      
+            sx={{
+              [`& .${axisClasses.root} .${axisClasses.line}`]: {stroke: 'white'},
+              [`& .${axisClasses.root} .${axisClasses.tickLabel}`]: {stroke: 'white'},
+              [`& .${axisClasses.root} .${axisClasses.label}`]: {stroke: 'white'},
+            }}
+        />
         )}
     </Card>
   )
