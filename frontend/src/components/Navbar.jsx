@@ -26,7 +26,8 @@ display: flex;
 gap:14px; 
 padding: 0px 24px; 
 font-size: 1 rem; 
-justify-content: space-between;`;
+justify-content: space-between;
+@media(max-width: 600px){padding: 4px; gap: 6px;}`;
 
 const NavLogo = styled(Link)`
 width: 100%;
@@ -38,7 +39,8 @@ font-weight: 600;
 font-size: 18px; 
 text-decoration: none;
 color: grey;
-&:hover{color: white}`;
+&:hover{color: white}
+@media(max-width: 600px){padding: 4px; gap: 6px;}`;
 
 const Logo = styled.img`
   height: 100px;
@@ -78,6 +80,7 @@ color: white;
 &:active{
 color: ${({theme}) => "white"};
 border-bottom: 2px solid white;}
+@media(max-width: 600px){padding-left: 20px;}
 `;
 
 const UserContainer = styled.div`
@@ -89,6 +92,7 @@ justify-content: flex-end;
 gap: 16px; 
 color: grey; 
 padding: 0 15px; 
+@media(max-width: 600px){padding-left: 0px;}
 `;
 
 const TextButton = styled.div``;
@@ -97,7 +101,7 @@ const MobileMenu = styled.ul`
 display: flex; 
 flex-direction: column; 
 align-items: start; 
-padding: 0 6px; 
+padding: 0 20px; 
 gap: 16px;
 list-style:none;
 width: 90%;
@@ -112,6 +116,8 @@ border-radius: 0 0 20px 20px;
 opacity: ${props => (props.$isOpen ?"100%" : "1%")};
 z-index: ${props => (props.$isOpen ? "10000" : "-100")};
 `;
+
+
 
 
 const Navbar = () => {

@@ -7,6 +7,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6px;
+  color: white;
 `;
 
 const Label = styled.label`
@@ -80,7 +81,7 @@ const Input = styled.input`
   outline: none;
   border: none;
   background-color: transparent;
-  color: ${({ theme }) => theme.text_primary};
+  color: white;
   &:focus {
     outline: none;
   }

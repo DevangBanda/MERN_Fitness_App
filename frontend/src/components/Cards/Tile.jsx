@@ -6,23 +6,21 @@ import styled from "styled-components"
 const Container = styled.div`
 flex: 1;
 display: flex; 
-width: fit-content;
+justify-content: space-between;
 align-items: center;
 background: ${({theme}) => theme.bgLight};
 border: 1px solid black;
 box-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
 border-radius: 12px;
 padding: 10px 0 0 25px;
-
+max-width: 100%;
 `;
 
 const Left = styled.div`
 display: flex; 
-width: 100%; 
 flex-direction: column;
 `;
 
-const LeftContainer = styled.div``;
 
 const Title = styled.div`
 font-size: 1.5rem; 
@@ -69,14 +67,12 @@ const Tile = ({item, data}) => {
   return (
     <Container>
         <Left>
-          <LeftContainer>
             <Title>{item.name}</Title>
             <Value>{data && data[item.key].toFixed(2)}
               <Units>{item.unit}</Units>
               <Change $positive>(10%)</Change>
             </Value>
             <Desc>{item.desc}</Desc>
-          </LeftContainer>
         </Left>
         <Icon color={"red"}>
           {item.icon}

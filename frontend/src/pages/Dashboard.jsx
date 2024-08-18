@@ -9,7 +9,7 @@ import WorkoutCard from '../components/Cards/WorkoutCard';
 const Container = styled.div`
 display: flex; 
 height: 100%;
-width: 100%;
+max-width: 100%;
 flex: 1;
 justify-content: center;
 overflow-y: scroll;
@@ -21,7 +21,6 @@ const Title = styled.div`
 font-size: 2rem;
 color: mainPrimary;
 text-align: center;
-
 `;
 
 const Wrapper = styled.div`
@@ -34,6 +33,7 @@ gap: 30px;
 
 const FlexWrap = styled.div`
 display: flex;
+flex: 1;
 flex-wrap: wrap;
 justify-content: space-evenly;
 gap: 30px;

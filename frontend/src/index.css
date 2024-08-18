@@ -24,3 +24,17 @@ body {
   border-radius: 6px;
   height: 50px;
 }
+
+.MuiButtonBase-root.MuiPickersDay-root {
+  color: white; 
+} 
+
+
+.MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-rhmlg1-MuiTypography-root-MuiDayCalendar-weekDayLabel {
+  color: white; /* Example style */
+}
+
+
+.MuiDateCalendar-root.css-rbv14m-MuiDateCalendar-root *{
+  color: white; /* Example style */
+}

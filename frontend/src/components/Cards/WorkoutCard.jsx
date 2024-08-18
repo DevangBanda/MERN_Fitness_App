@@ -38,13 +38,17 @@ width: fit-content;
 const Amount = styled.div``;
 
 const Flex = styled.div`
-display: flex; 
+display: flex;
+padding: 0 20px;
 gap: 20px;`; 
 
 const Details = styled.div`
 display: flex; 
+font-size: 15px;
+align-items: center;
 justify-content: center;
-gap: 4px`; 
+gap: 4px; 
+flex-wrap: nowrap;`; 
 
 
 const WorkoutCard = () => {
