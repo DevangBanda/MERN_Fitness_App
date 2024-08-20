@@ -137,7 +137,7 @@ const Navbar = () => {
 
         <MobileMenu $isOpen = {isOpen}>
           <Navlink to = "/">Home</Navlink>
-          <Navlink to = "/">Workouts</Navlink>
+          <Navlink to = "/Workout">Workouts</Navlink>
           <Navlink to = "/">Tutorials</Navlink>
           <Navlink to = "/">Blog</Navlink>
           <Navlink to = "/">Contact</Navlink>
@@ -145,7 +145,7 @@ const Navbar = () => {
 
         <NavItems>
           <Navlink to = "/">Home</Navlink>
-          <Navlink to = "/">Workouts</Navlink>
+          <Navlink to = "/Workout">Workouts</Navlink>
           <Navlink to = "/">Tutorials</Navlink>
           <Navlink to = "/">Blog</Navlink>
           <Navlink to = "/">Contact</Navlink>

@@ -38,3 +38,8 @@ body {
 .MuiDateCalendar-root.css-rbv14m-MuiDateCalendar-root *{
   color: white; /* Example style */
 }
+
+.MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin.MuiPickersDay-today.css-23p0if-MuiButtonBase-root-MuiPickersDay-root{
+  background-color: rgb(255, 189, 7);
+  color: black;
+}
