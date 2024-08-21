@@ -14,22 +14,24 @@ app.get('/', (req, res) => {
     res.status(200).json({message: "Hello"});
 })
 
-//Error handler 
-app.use((err, req, res, next) =>
-{
-    const status = err.status || 500;
-    const message = err.message || "Something Went Wrong";
-
-    return res.status(status).json(
-        {
-            success: false, 
-            status, 
-            message,
-        }
-    );
-});
 
 app.use('/api/user', UserRoutes);
+
+
+//Error handler 
+app.use((err, req, res, next) =>
+    {
+        const status = err.status || 500;
+        const message = err.message || "Something Went Wrong";
+    
+        return res.status(status).json(
+            {
+                success: false, 
+                status, 
+                message,
+            }
+        );
+    });
 
 mongoose   
         .connect(process.env.mongoDB_URL)

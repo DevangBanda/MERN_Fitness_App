@@ -7,7 +7,7 @@ const workoutSchema = new mongoose.Schema({
         ref: "User",
         required: true,
     }, 
-    category: {type: String, required: true,}, 
+    categoryCalories: {type: String, required: true,}, 
     workoutName: {type:String, required: true, unique: true,}, 
     sets: {type: Number, required: true,}, 
     reps: {type: Number,}, 
