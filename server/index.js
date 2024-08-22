@@ -17,7 +17,6 @@ app.get('/', (req, res) => {
 
 app.use('/api/user', UserRoutes);
 
-
 //Error handler 
 app.use((err, req, res, next) =>
     {

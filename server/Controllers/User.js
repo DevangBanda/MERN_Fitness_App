@@ -234,21 +234,20 @@ const getWorkoutsByDate = async(req, res, next) => {
             userId: userId,
             date: { $gte: startToday, $lt: endToday },
           });
-          
+
         const totalCaloriesBurnt = todaysWorkouts.reduce(
         (total, workout) => total + workout.caloriesBurnt,
         0
         );
       
-          return res.status(200).json({ todaysWorkouts, totalCaloriesBurnt });
-        
-
-
-
+    return res.status(200).json({ todaysWorkouts, totalCaloriesBurnt });
     } 
 
     catch (error) 
     {
         next(error)
+        console.log(error)
     }
-}   
+};
+
+
