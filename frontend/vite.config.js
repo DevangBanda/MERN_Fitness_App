@@ -7,4 +7,7 @@ export default defineConfig({
   loader: {
     '.js': 'jsx', // Set the loader for .js files to 'jsx'
   },
+  server: {
+    port: 5173, // Change this to your desired port number
+  },
 })

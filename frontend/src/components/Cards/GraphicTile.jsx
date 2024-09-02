@@ -41,14 +41,23 @@ const GraphicTile = ({data}) => {
                 fontSize: 15,}, 
               
             }]}
-            series={[{scaleType:"band", data: data?.weekCalories?.caloriesBurnt, label:"Calories Burnt Per Day",
-              highlightScope: { faded: 'global', highlighted: 'item' },
-              faded: {height: 30,color: 'black', opacity: 0.3 },
-              highlighted: {
-                color: 'red', // Color for highlighted items
-                height: 350 // Optional: adjust height for highlighted items if needed
-              }
-            }]}
+            // series={[{scaleType:"band", data: data?.weekCalories?.caloriesBurnt, label:"Calories Burnt Per Day",
+            //   highlightScope: { faded: 'global', highlighted: 'item' },
+            //   faded: {height: 30,color: 'black', opacity: 0.3 },
+            //   highlighted: {
+            //     color: 'red', // Color for highlighted items
+            //     height: 350 // Optional: adjust height for highlighted items if needed
+            //   }
+            // }]}
+            series={[
+              {
+                data: data?.pieChartData,
+                innerRadius: 30,
+                outerRadius: 120,
+                paddingAngle: 5,
+                cornerRadius: 5,
+              },
+            ]}
             height={300}
             borderRadius={10}
             slotProps={{legend: {labelStyle: {fill:'white'}}}}

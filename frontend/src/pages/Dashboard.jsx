@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
 import {counts} from '../utils/data';
 import Tile from '../components/Cards/Tile';
 import GraphicTile from '../components/Cards/GraphicTile';
 import StatsChart from '../components/Cards/StatsChart';
 import WorkoutCard from '../components/Cards/WorkoutCard';
+import AddWorkout from '../components/AddWorkout';
+import { getDashboardDetails, getWorkouts, addWorkout } from '../api';
 
 const Container = styled.div`
 display: flex; 
@@ -59,37 +61,53 @@ padding: 0 20px;
 
 const Dashboard = () => {
 
-  const data = {
-    totalCaloriesBurnt: 1350, 
-    totalWorkouts: 6, 
-    avgCaloriesBurntPerWorkout: 225, 
-    weekCalories:{
-      weeks:["17th", "18th","19th","20th","21st","22nd"],
-      caloriesBurnt:[10500, 10500,10500,10500,10500,0]
-    }, 
-    pieChartData: [
-      {
-        id: 0, 
-        value: 2500, 
-        label: "arms"
-      },
-      {
-        id: 1, 
-        value: 1500, 
-        label: "chest"
-      },
-      {
-        id: 2, 
-        value: 3750, 
-        label: "back"
-      }, 
-      {
-        id: 3, 
-        value: 5000, 
-        label: "legs"
-      },
-    ],
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState();
+  const [buttonLoading, setButtonLoading] = useState(false);
+  const [todaysWorkouts, setTodaysWorkouts] = useState([]);
+  const [workout, setWorkout] = useState(`#Legs
+-Back Squat
+-5 setsX15 reps
+-30 kg
+-10 min`);
+
+  const dashboardData = async () => {
+    setLoading(true);
+    const token = localStorage.getItem("fittrack-app-token");
+    await getDashboardDetails(token).then((res) => {
+      setData(res.data);
+      console.log(res.data);
+      setLoading(false);
+    });
   };
+  const getTodaysWorkout = async () => {
+    setLoading(true);
+    const token = localStorage.getItem("fittrack-app-token");
+    await getWorkouts(token, "").then((res) => {
+      setTodaysWorkouts(res?.data?.todaysWorkouts);
+      console.log(res.data);
+      setLoading(false);
+    });
+  };
+
+  const addNewWorkout = async () => {
+    setButtonLoading(true);
+    const token = localStorage.getItem("fittrack-app-token");
+    await addWorkout(token, { workoutString: workout })
+      .then((res) => {
+        dashboardData();
+        getTodaysWorkout();
+        setButtonLoading(false);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+  useEffect(() => {
+    dashboardData();
+    getTodaysWorkout();
+  }, []);
 
 
   return (
@@ -105,6 +123,12 @@ const Dashboard = () => {
          <FlexWrap>
           <GraphicTile data = {data}></GraphicTile>
           <StatsChart data = {data}></StatsChart>
+          <AddWorkout
+            workout={workout}
+            setWorkout={setWorkout}
+            addNewWorkout={addNewWorkout}
+            buttonLoading={buttonLoading}
+          />
          </FlexWrap>
 
          <Section>

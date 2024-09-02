@@ -64,14 +64,16 @@ justify-content: center;
 `;
 
 const Tile = ({item, data}) => {
+  console.log(data);
   return (
     <Container>
         <Left>
             <Title>{item.name}</Title>
-            <Value>{data && data[item.key].toFixed(2)}
+              <Value>
+              {data && data[item.key]}
               <Units>{item.unit}</Units>
-              <Change $positive>(10%)</Change>
-            </Value>
+              <Change positive>(+10%)</Change>
+        </Value>
             <Desc>{item.desc}</Desc>
         </Left>
         <Icon color={"red"}>

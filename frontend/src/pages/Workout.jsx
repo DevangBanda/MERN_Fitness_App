@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled, { ThemeProvider } from 'styled-components';
 import WorkoutCard from '../components/Cards/WorkoutCard';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import {DateCalendar} from "@mui/x-date-pickers"; 
-
+import { useDispatch } from "react-redux";
 
 const Container = styled.div`
 display: flex; 
@@ -68,6 +68,26 @@ margin-bottom: 100px;
 `;
 
 const Workout = () => {
+
+  const dispatch = useDispatch();
+  const [todaysWorkouts, setTodaysWorkouts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [date, setDate] = useState("");
+
+  const getTodaysWorkout = async () => {
+    setLoading(true);
+    const token = localStorage.getItem("fittrack-app-token");
+    await getWorkouts(token, date ? `?date=${date}` : "").then((res) => {
+      setTodaysWorkouts(res?.data?.todaysWorkouts);
+      console.log(res.data);
+      setLoading(false);
+    });
+  };
+
+  useEffect(() => {
+    getTodaysWorkout();
+  }, [date]);
+
   return (
     <Container>
       <Wrapper> 

@@ -1,24 +1,25 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    currentUser: null,
-}
+  currentUser: null,
+};
 
 export const userSlice = createSlice({
-    name: "user", 
-    initialState, 
-    reducers: {
-        loginSuccess: (state, action) => {
-            state.currentUser = action.payload.user;
-            localStorage.setItem("fittrack-app-token", action.payload.token);
-          },
-          logout: (state) => {
-            state.currentUser = null;
-            localStorage.removeItem("fitttrack-app-token");
-          },
-    }
-}); 
+  name: "user",
+  initialState,
+  reducers: {
+    loginSuccess: (state, action) => {
+      state.currentUser = action.payload.currUser;
+      console.log(action);
+      localStorage.setItem("fittrack-app-token", action.payload.token);
+    },
+    logout: (state) => {
+      state.currentUser = null;
+      localStorage.removeItem("fitttrack-app-token");
+    },
+  },
+});
 
-export const {loginSuccess, logout} = userSlice.actions; 
+export const { loginSuccess, logout } = userSlice.actions;
 
-export default userSlice.reducers; 
+export default userSlice.reducer;
