@@ -7,7 +7,6 @@ import { store, persistor } from "./redux/store";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-console.log("rendering")
 root.render(
   <React.StrictMode>
     <Provider store={store}>
